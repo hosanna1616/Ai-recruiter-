@@ -18,26 +18,9 @@ A modern recruitment platform built with React and Material-UI, featuring AI-pow
 - Recharts for data visualization
 - React Router for navigation
 
-## Getting Started
 
-1. Clone the repository
 
-```bash
-git clone [your-repo-url]
-cd quenerecruit
-```
 
-2. Install dependencies
-
-```bash
-npm install
-```
-
-3. Start the development server
-
-```bash
-npm run dev
-```
 
 ## Project Structure
 
