@@ -22,18 +22,15 @@ if (!fs.existsSync(resumesDir)) {
 }
 
 // Configure CORS
-app.use(
-  cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
+app.use(cors());
 
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Serve static files from the src directory
+app.use(express.static(path.join(__dirname, "src")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // Serve uploaded files
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
@@ -59,17 +56,10 @@ sequelize
     console.error("Unable to connect to the database:", err);
   });
 
-// Basic route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to QUENERECRUIT API" });
+// Serve the main HTML file for all routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
-
-// Routes will be added here
-// app.use('/api/auth', require('./routes/auth.routes'));
-// app.use('/api/candidates', require('./routes/candidate.routes'));
-// app.use('/api/jobs', require('./routes/job.routes'));
-// app.use('/api/interviews', require('./routes/interview.routes'));
-// app.use('/api/analytics', require('./routes/analytics.routes'));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -81,7 +71,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

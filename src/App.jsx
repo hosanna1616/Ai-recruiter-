@@ -12,7 +12,7 @@ import Chatbot from "./pages/Chatbot";
 import Analytics from "./pages/Analytics";
 import Jobs from "./pages/Jobs";
 import CandidateEvaluation from "./pages/CandidateEvaluation";
-
+import chatbot from "./components/Chatbot"
 const theme = createTheme({
   palette: {
     primary: {
