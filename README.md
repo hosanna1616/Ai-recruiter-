@@ -21,18 +21,3 @@ A modern recruitment platform built with React and Material-UI, featuring AI-pow
 
 
 
-
-## Project Structure
-
-
-src/
-├── components/     # Reusable UI components
-├── pages/         # Main page components
-├── assets/        # Images and static files
-└── App.jsx        # Main application component
-
-
-
-
-
-.
